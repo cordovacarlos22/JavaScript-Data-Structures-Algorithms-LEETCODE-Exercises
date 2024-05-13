@@ -1,34 +1,17 @@
-// CREATE NODE CLASS HERE //
-//                        //
-//                        //
-//                        //
-//                        //
-////////////////////////////
 class Node {
   constructor(value) {
     this.value = value;
-    this.next = null
+    this.next = null;
   }
-};
-
-
-
+}
 
 class LinkedList {
-
-  // YOUR  LL constructo HERE//
-  //                        //
-  //                        //
-  //                        //
-  //                        //
-  ////////////////////////////
   constructor(value) {
     const newNode = new Node(value);
     this.head = newNode;
     this.tail = this.head;
     this.length = 1;
   }
-
 
   printList() {
     let temp = this.head;
@@ -47,7 +30,7 @@ class LinkedList {
   }
 
   getTail() {
-    if (this.head === null) {
+    if (this.tail === null) {
       console.log("Tail: null");
     } else {
       console.log("Tail: " + this.tail.value);
@@ -58,11 +41,40 @@ class LinkedList {
     console.log("Length: " + this.length);
   }
 
+  makeEmpty() {
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
+  }
+
+  /// WRITE PUSH METHOD HERE ///
+  //                          //
+  //                          //
+  //                          //
+  //                          //
+  //////////////////////////////
+  push(value) {
+    const newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+    this.length++
+    return this;
+  }
+
 }
 
 
 
-let myLinkedList = new LinkedList(4);
+let myLinkedList = new LinkedList(1);
+myLinkedList.makeEmpty();
+myLinkedList.push(1);
+myLinkedList.push(2);
+
 
 myLinkedList.getHead();
 myLinkedList.getTail();
@@ -74,11 +86,12 @@ myLinkedList.printList();
 /*
     EXPECTED OUTPUT:
     ----------------
-    Head: 4
-    Tail: 4
-    Length: 1
-    
+    Head: 1
+    Tail: 2
+    Length: 2
+
     Linked List:
-    4
+    1
+    2
 
 */
